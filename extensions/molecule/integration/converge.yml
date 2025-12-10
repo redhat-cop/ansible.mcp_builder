@@ -7,6 +7,7 @@
     - name: Run install_mcp playbook
       ansible.builtin.include_role:
         name: ansible.mcp_builder.common
+        public: true
 
     - name: Parse mcp_servers input
       ansible.builtin.include_role:
