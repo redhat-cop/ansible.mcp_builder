@@ -8,6 +8,7 @@
     - name: Ensure base functionality
       ansible.builtin.include_role:
         name: ansible.mcp_builder.common
+        public: true
 
     - name: Parse mcp_servers input
       ansible.builtin.include_role:
@@ -18,4 +19,13 @@
       ansible.builtin.include_role:
         name: "ansible.mcp_builder.{{ item }}"
       loop: "{{ common_mcp_roles }}"
+      when: do_installation | default(true)
+
+    - name: Fix ownership of all MCP installations for runtime user
+      ansible.builtin.file:
+        path: "{{ common_mcp_base_path }}"
+        state: directory
+        recurse: true
+        owner: "{{ common_runtime_user }}"
+        group: "{{ common_runtime_user }}"
       when: do_installation | default(true)

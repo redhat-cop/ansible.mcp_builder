@@ -11,6 +11,14 @@
     name: ansible.mcp_builder.common
     tasks_from: generate_manifest
 
+# Needed because the server calls checkov as a subprocess
+- name: Create symlink for checkov in system bin directory
+  ansible.builtin.file:
+    src: "{{ common_mcp_base_path }}/.uv-tools/awslabs-ccapi-mcp-server/bin/checkov"
+    dest: "{{ common_system_bin_path }}/checkov"
+    state: link
+  become: true
+
 - name: Verify AWS Core MCP installation
   ansible.builtin.command:
     cmd: mcp_manage run {{ common_package_name }} --help

@@ -33,20 +33,22 @@
 
     - name: Find uv installation path after fresh install
       ansible.builtin.stat:
-        path: "{{ item }}"
+        path: "{{ uv_path_item }}"
       loop:
         - "{{ lookup('env', 'HOME') }}/.cargo/bin/uv"
         - "{{ lookup('env', 'HOME') }}/.local/bin/uv"
+      loop_control:
+        loop_var: uv_path_item
       register: common_uv_path_check
 
     - name: Set uv path from installation
       ansible.builtin.set_fact:
-        common_uv_path: "{{ uv_check.item }}"
+        common_uv_path: "{{ uv_check.uv_path_item }}"
       loop: "{{ common_uv_path_check.results }}"
       when: uv_check.stat.exists
       loop_control:
         loop_var: uv_check
-        label: "{{ uv_check.item }}"
+        label: "{{ uv_check.uv_path_item }}"
 
     - name: Create symlink for uv in system bin directory
       ansible.builtin.file:
