@@ -41,6 +41,7 @@ ansible.mcp_builder.install_mcp|Installs selected MCP servers
 **External dependencies**:
   - `ansible-builder` for building Execution Environments
   - `podman` or `docker` for container runtime
+  - Fedora/RHEL base image for use in Execution Environment builds
 
 ## Installation
 
@@ -77,7 +78,7 @@ See [using Ansible collections](https://docs.ansible.com/ansible/devel/user_guid
 
 The `ansible.mcp_builder` collection is designed to run as a step in building an Execution Environment (EE), allowing you to deploy multiple MCP servers from various sources (npm packages, PyPI packages, and compiled Go binaries) in a single environment.
 
-The collection must be listed as a `galaxy` dependency in the `execution-environment.yml` file, either directly listed or passed via a `requirements.yml` file. See the [ansible-builder EE definition docs](https://docs.ansible.com/projects/builder/en/stable/definition/#dependencies) for more details. 
+The collection must be listed as a `galaxy` dependency in the `execution-environment.yml` file, either directly listed or passed via a `requirements.yml` file. See the [ansible-builder EE definition docs](https://docs.ansible.com/projects/builder/en/stable/definition/#dependencies) for more details.
 
 To select MCP servers to install, use the `-e` flag with the `mcp_servers` variable. Servers are selected by their exact role name (e.g., `github_mcp`).
 
@@ -144,7 +145,7 @@ This collection has been tested in the following environments:
 
 - **Execution Environments**: Built with `ansible-builder` 3.x
 - **Container Runtimes**: Podman 4.x, Docker 24.x
-- **Operating Systems**: RHEL 9, Fedora 38+, Ubuntu 22.04+
+- **Operating Systems**: RHEL 8 - 9
 - **Ansible Core versions**: 2.16+ - 2.20+
 - **Python versions**: 3.10-3.13
 
