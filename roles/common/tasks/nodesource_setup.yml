@@ -16,10 +16,11 @@
   become: true
 
 - name: "Install Node.js package (version: {{ common_nodejs_min_version }})"
-  ansible.builtin.package:
-    name: nodejs
-    state: present
+  ansible.builtin.command:
+    cmd: "{{ common_package_manager }} install -y nodejs"
   become: true
+  register: common_nodejs_install_result
+  changed_when: common_nodejs_install_result.rc == 0
 
 - name: Clean up NodeSource setup script
   ansible.builtin.file:

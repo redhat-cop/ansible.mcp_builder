@@ -1,0 +1,16 @@
+---
+# Detect the system package manager
+# Sets common_package_manager fact (microdnf if available, otherwise dnf)
+
+- name: Check if microdnf exists
+  ansible.builtin.stat:
+    path: /usr/bin/microdnf
+  register: common_check_microdnf
+
+- name: Set package manager fact
+  ansible.builtin.set_fact:
+    common_package_manager: "{{ 'microdnf' if common_check_microdnf.stat.exists else 'dnf' }}"
+
+- name: Display detected package manager
+  ansible.builtin.debug:
+    msg: "Detected package manager: {{ common_package_manager }}"

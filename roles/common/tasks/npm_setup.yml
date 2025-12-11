@@ -1,35 +1,28 @@
 ---
 # Node.js and npm setup tasks
-- name: Set up NodeSource repository and install Node.js
-  ansible.builtin.include_tasks: nodesource_setup.yml
 
-- name: Verify Node.js installation
+- name: Check if Node.js is already installed
   ansible.builtin.command: node --version
-  register: common_node_version_output
+  register: common_node_existing
   changed_when: false
+  failed_when: false
 
-- name: Assert Node.js is working
-  ansible.builtin.assert:
-    that:
-      - common_node_version_output.rc == 0
-      - common_node_version_output.stdout is defined
-      - common_node_version_output.stdout != ""
-    fail_msg: "Node.js installation verification failed - command 'node --version' did not work"
-    success_msg: "Node.js {{ common_node_version_output.stdout }} verified successfully"
+- name: Install Node.js if not present
+  when: common_node_existing.rc != 0
+  block:
+    - name: Detect package manager
+      ansible.builtin.include_tasks: detect_package_manager.yml
 
-- name: Verify NPM installation
+    - name: Set up NodeSource repository and install Node.js
+      ansible.builtin.include_tasks: nodesource_setup.yml
+
+    - name: Verify Node.js installation
+      ansible.builtin.command: node --version
+      changed_when: false
+
+- name: Verify NPM is available
   ansible.builtin.command: npm --version
-  register: common_npm_version_output
   changed_when: false
-
-- name: Assert NPM is working
-  ansible.builtin.assert:
-    that:
-      - common_npm_version_output.rc == 0
-      - common_npm_version_output.stdout is defined
-      - common_npm_version_output.stdout != ""
-    fail_msg: "NPM installation verification failed - command 'npm --version' did not work"
-    success_msg: "NPM {{ common_npm_version_output.stdout }} verified successfully"
 
 - name: Mark npm as installed
   ansible.builtin.set_fact:

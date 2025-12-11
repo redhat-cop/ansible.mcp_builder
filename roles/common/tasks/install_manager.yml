@@ -21,6 +21,10 @@
     common_package_name: "{{ common_registry_entry[0].package | default(common_registry_entry[0].name) }}"
   when: common_registry_entry | length > 0
 
+- name: Detect package manager
+  ansible.builtin.include_tasks: detect_package_manager.yml
+  when: common_registry_entry | length > 0
+
 - name: Include Go installation tasks
   ansible.builtin.include_tasks: go_install.yml
   when:
