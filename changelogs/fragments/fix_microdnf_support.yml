@@ -1,0 +1,4 @@
+---
+bugfixes:
+  - Allows microdnf usage instead of dnf.
+  - Checks for existing node installation before installing.
