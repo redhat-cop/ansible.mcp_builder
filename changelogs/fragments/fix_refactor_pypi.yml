@@ -1,3 +1,0 @@
----
-bugfixes:
-  - Refactored pypi installation to use persistent package paths.

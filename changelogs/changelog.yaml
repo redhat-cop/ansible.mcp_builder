@@ -30,6 +30,19 @@ releases:
     fragments:
       - summary_0.0.3.yml
     release_date: "2025-12-04"
+  1.0.0:
+    changes:
+      release_summary:
+        "First stable release of the mcp_builder collection. \nThis
+        release includes all the features to install and configure MCP servers when
+        building execution environments.\nIt is designed for use alongside the ansible.mcp
+        collection, providing a comprehensive solution for MCP server management with
+        Ansible.\n\nSee the collection's README for detailed usage instructions and
+        examples.\n\nNote: This collection is marked as Technology Preview until further
+        notice.\n"
+    fragments:
+      - summary_1.0.0.yml
+    release_date: "2025-12-12"
   1.0.0-rc1:
     changes:
       release_summary:

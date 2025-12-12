@@ -4,6 +4,20 @@ Ansible MCP Builder Collection Release Notes
 
 .. contents:: Topics
 
+v1.0.0
+======
+
+Release Summary
+---------------
+
+First stable release of the mcp_builder collection.
+This release includes all the features to install and configure MCP servers when building execution environments.
+It is designed for use alongside the ansible.mcp collection, providing a comprehensive solution for MCP server management with Ansible.
+
+See the collection's README for detailed usage instructions and examples.
+
+Note: This collection is marked as Technology Preview until further notice.
+
 v1.0.0-rc2
 ==========
 

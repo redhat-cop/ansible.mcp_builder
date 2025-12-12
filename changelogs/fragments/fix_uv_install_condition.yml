@@ -1,5 +1,0 @@
----
-bugfixes:
-  - Fixed circular symlink error when uv is already installed as a Python requirement
-  - Refactored pypi installation to be idempotent and respect existing uv installations
-  - Changed pypi installation to use uv environment variables for consistent package paths

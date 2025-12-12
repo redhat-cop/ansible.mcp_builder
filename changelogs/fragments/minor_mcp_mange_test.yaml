@@ -1,3 +1,0 @@
----
-minor_changes:
-  - Add `test` command to mcp_manage scrtipt to test MCPs are running properly.

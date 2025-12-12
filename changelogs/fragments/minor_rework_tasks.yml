@@ -1,4 +1,0 @@
----
-minor_changes:
-  - Moves install tasks into dedicated task files
-  - Adds a MCP manifest file and management script

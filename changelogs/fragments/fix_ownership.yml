@@ -1,3 +1,0 @@
----
-bugfixes:
-  - Change ownership of /opt/mcp to the runtime user.
