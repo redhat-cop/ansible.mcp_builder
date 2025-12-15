@@ -4,6 +4,15 @@ Ansible MCP Builder Collection Release Notes
 
 .. contents:: Topics
 
+v1.0.1
+======
+
+Bugfixes
+--------
+
+- Added version variables for all MCP servers.
+- Skipped AWS Core MCP verification temporarily. See https://github.com/awslabs/mcp/issues/1947
+
 v1.0.0
 ======
 
@@ -17,23 +26,6 @@ It is designed for use alongside the ansible.mcp collection, providing a compreh
 See the collection's README for detailed usage instructions and examples.
 
 Note: This collection is marked as Technology Preview until further notice.
-
-v1.0.0-rc2
-==========
-
-Release Summary
----------------
-
-Pre-release (release candidate 2) of the mcp_builder collection.
-Removes the TESTING documentation from the artifact.
-
-v1.0.0-rc1
-==========
-
-Release Summary
----------------
-
-Pre-release (release candidate 1) of the mcp_builder collection.
 
 v0.0.3
 ======
