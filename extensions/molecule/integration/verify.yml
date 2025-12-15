@@ -153,7 +153,7 @@
         - awslabs.iam-mcp-server
         - awslabs.ccapi-mcp-server
         - awslabs.cdk-mcp-server
-        - awslabs.core-mcp-server
+        # - awslabs.core-mcp-server  # TODO - Temporarily disabled. See https://github.com/awslabs/mcp/issues/1947
       loop_control:
         label: "{{ item }}"
 

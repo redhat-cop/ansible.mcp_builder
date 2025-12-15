@@ -1,0 +1,3 @@
+---
+bugfixes:
+  - Skip AWS Core MCP verification temporarily. See https://github.com/awslabs/mcp/issues/1947
