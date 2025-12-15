@@ -23,6 +23,7 @@ azure_mcp_namespaces:
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `azure_mcp_namespaces` | `["az"]` | Azure namespaces to enable. The first namespace in the list is used for the `--namespace` argument. Can be overridden by passing variables or var files. |
+| `azure_mcp_version` | `"latest"` | MCP Server version to install. |
 
 ## Usage
 

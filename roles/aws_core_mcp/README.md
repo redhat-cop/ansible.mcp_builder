@@ -25,6 +25,12 @@ The server requires AWS credentials to be configured. You can use any of the fol
     export AWS_REGION=us-east-1
     ```
 
+## Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `aws_core_mcp_version` | `"latest"` | MCP Server version to install. |
+
 ## Usage
 
 To install the `aws_core_mcp` server using this role, add it to the `mcp_server` list when calling the primary `install_mcp` playbook in an EE definition file.

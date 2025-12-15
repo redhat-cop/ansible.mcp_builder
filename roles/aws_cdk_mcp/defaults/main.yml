@@ -6,3 +6,5 @@ aws_cdk_mcp_registry:
     lang: "pypi"
     args: []
     description: "An MCP server for AWS Cloud Development Kit (CDK) best practices, IaC patterns, and security compliance with CDK Nag."
+
+aws_cdk_mcp_version: "latest"

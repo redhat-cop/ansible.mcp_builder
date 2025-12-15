@@ -7,7 +7,10 @@
 
 - name: Install PyPI MCP server package
   ansible.builtin.command:
-    cmd: uv tool install {{ common_package_name }}
+    cmd: >-
+      uv tool install
+      --python {{ common_python_version | default(common_detected_python_version) }}
+      {{ common_package_name }}@{{ common_server_version }}
   environment:
     UV_TOOL_BIN_DIR: "{{ common_mcp_base_path }}/bin"
     UV_TOOL_DIR: "{{ common_mcp_base_path }}/.uv-tools"
@@ -17,11 +20,10 @@
 
 - name: Display successfully installed PyPI package
   ansible.builtin.debug:
-    msg: "Successfully installed PyPI MCP server package: {{ common_package_name }}"
+    msg: "Installed {{ common_package_name }}@{{ common_server_version }}"
   when:
     - common_pypi_install_result is defined
     - common_pypi_install_result.rc == 0
-    - ansible_verbosity >= 2
 
 - name: Display failed PyPI package installation
   ansible.builtin.debug:
