@@ -6,3 +6,5 @@ aws_core_mcp_registry:
     lang: "pypi"
     args: []
     description: "An MCP server that provides a starting point for using AWS MCP servers through a dynamic proxy server strategy"
+
+aws_core_mcp_version: "latest"

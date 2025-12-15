@@ -75,6 +75,19 @@
         path: "/tmp/uv-install.sh"
         state: absent
 
+# Override image default Python with specified Python interpreter
+- name: Detect Python version for uv tool installs
+  ansible.builtin.command:
+    cmd: python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
+  register: common_python_version_output
+  changed_when: false
+  when: common_python_version is not defined
+
+- name: Set detected Python version
+  ansible.builtin.set_fact:
+    common_detected_python_version: "{{ common_python_version_output.stdout }}"
+  when: common_python_version is not defined
+
 - name: Set PyPI installation flag
   ansible.builtin.set_fact:
     common_pypi_installed: true

@@ -1,13 +1,6 @@
 ---
 # Go installation tasks
 
-- name: Get parent role name for build variables
-  ansible.builtin.set_fact:
-    common_parent_role_prefix: "{{ ansible_parent_role_names[0].split('.')[-1] }}"
-  when:
-    - ansible_parent_role_names is defined
-    - ansible_parent_role_names | length > 0
-
 - name: Initialize Go build details dictionary
   ansible.builtin.set_fact:
     common_go_build_details: {}

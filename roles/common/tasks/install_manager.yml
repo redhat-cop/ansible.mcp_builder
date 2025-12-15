@@ -1,7 +1,14 @@
 ---
+- name: Get parent role name for build variables
+  ansible.builtin.set_fact:
+    common_parent_role_prefix: "{{ ansible_parent_role_names[0].split('.')[-1] }}"
+  when:
+    - ansible_parent_role_names is defined
+    - ansible_parent_role_names | length > 0
+
 - name: Get registry from parent role
   ansible.builtin.set_fact:
-    common_registry_entry: "{{ lookup('vars', ansible_parent_role_names[0].split('.')[-1] + '_registry', default=[]) }}"
+    common_registry_entry: "{{ lookup('vars', common_parent_role_prefix + '_registry', default=[]) }}"
   when:
     - ansible_parent_role_names is defined
     - ansible_parent_role_names | length > 0
@@ -20,6 +27,11 @@
   ansible.builtin.set_fact:
     common_package_name: "{{ common_registry_entry[0].package | default(common_registry_entry[0].name) }}"
   when: common_registry_entry | length > 0
+
+- name: Get server version from parent role
+  ansible.builtin.set_fact:
+    common_server_version: "{{ lookup('vars', common_parent_role_prefix + '_version', default='latest') }}"
+  when: common_parent_role_prefix is defined
 
 - name: Detect package manager
   ansible.builtin.include_tasks: detect_package_manager.yml
