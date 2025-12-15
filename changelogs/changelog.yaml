@@ -60,3 +60,12 @@ releases:
     fragments:
       - summary_1.0.0_rc2.yml
     release_date: "2025-12-05"
+  1.0.1:
+    changes:
+      bugfixes:
+        - Added version variables for all MCP servers.
+        - Skipped AWS Core MCP verification temporarily. See https://github.com/awslabs/mcp/issues/1947
+    fragments:
+      - fix_add_version_variables.yml
+      - fix_ignore_aws_core_verification.yml
+    release_date: "2025-12-15"
