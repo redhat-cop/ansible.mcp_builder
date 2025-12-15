@@ -32,6 +32,12 @@ The server's default behavior can be customized through environment variables, s
 
 See the documentation [here](https://awslabs.github.io/mcp/servers/ccapi-mcp-server#server-configuration) for configuration details on tagging resources and security scanning options.
 
+## Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `aws_ccapi_mcp_version` | `"latest"` | MCP Server version to install. |
+
 ## Usage
 
 To install the `aws_ccapi_mcp` server using this role, add it to the `mcp_server` list when calling the primary `install_mcp` playbook in an EE definition file.

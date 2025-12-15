@@ -24,6 +24,12 @@ The server requires AWS credentials to be configured. You can use any of the fol
 
 3. IAM Roles (for EC2/Lambda): The server will automatically use IAM roles when running on AWS services.
 
+## Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `aws_iam_mcp_version` | `"latest"` | MCP Server version to install. |
+
 ## Usage
 
 To install the `aws_iam_mcp` server using this role, add it to the `mcp_server` list when calling the primary `install_mcp` playbook in an EE definition file.
