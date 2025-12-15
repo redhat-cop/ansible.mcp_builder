@@ -27,4 +27,4 @@ build_ignore:
   - tools/
 
 dependencies:
-  "ansible.mcp": ">=1.0.0"
+  "ansible.mcp": "*"
