@@ -72,7 +72,7 @@
 
 - name: Install npm package
   ansible.builtin.command:
-    cmd: npm install {{ common_package_name }}
+    cmd: npm install {{ common_package_name }}@{{ common_server_version }}
     chdir: "{{ common_mcp_base_path }}/npm_installs"
   register: common_npm_install_result
   failed_when: false

@@ -6,3 +6,5 @@ aws_ccapi_mcp_registry:
     lang: "pypi"
     args: []
     description: "An MCP server that enables LLMs to directly create and manage AWS resources using AWS Cloud Control API and IaC Generator."
+
+aws_ccapi_mcp_version: "latest"

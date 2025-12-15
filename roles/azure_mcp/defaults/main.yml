@@ -14,3 +14,5 @@ azure_mcp_registry:
       - "--namespace"
       - "az" # Default, will be replaced by task if azure_mcp_namespaces is overridden
     description: "Azure MCP Server - Interact with Azure resources via Model Context Protocol"
+
+azure_mcp_version: "latest"
