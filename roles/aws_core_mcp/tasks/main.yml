@@ -22,6 +22,7 @@
     cmd: mcp_manage run {{ common_package_name }} --help
   changed_when: false
   register: aws_core_mcp_verify_result
+  when: aws_core_mcp_do_verify | default(true)
 
 - name: Display failed AWS Core MCP installation
   ansible.builtin.debug:
