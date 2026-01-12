@@ -77,8 +77,12 @@
 
 # Override image default Python with specified Python interpreter
 - name: Detect Python version for uv tool installs
+  vars:
+    python_cmd: "{{ ansible_python_interpreter | default('python3') }}"
   ansible.builtin.command:
-    cmd: python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
+    cmd: >-
+      {{ python_cmd }} -c
+      "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')"
   register: common_python_version_output
   changed_when: false
   when: common_python_version is not defined

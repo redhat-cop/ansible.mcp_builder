@@ -15,7 +15,6 @@
     UV_TOOL_BIN_DIR: "{{ common_mcp_base_path }}/bin"
     UV_TOOL_DIR: "{{ common_mcp_base_path }}/.uv-tools"
   register: common_pypi_install_result
-  failed_when: false
   changed_when: common_pypi_install_result.rc == 0
 
 - name: Display successfully installed PyPI package

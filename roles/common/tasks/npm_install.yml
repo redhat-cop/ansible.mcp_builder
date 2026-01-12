@@ -75,7 +75,6 @@
     cmd: npm install {{ common_package_name }}@{{ common_server_version }}
     chdir: "{{ common_mcp_base_path }}/npm_installs"
   register: common_npm_install_result
-  failed_when: false
   changed_when: common_npm_install_result.rc == 0
   when:
     - not common_npm_package_check.stat.exists
@@ -95,27 +94,18 @@
     - common_npm_install_result is defined
     - common_npm_install_result.rc != 0
 
-- name: Access npm package
+- name: Verify npm package is installed
   ansible.builtin.command:
-    cmd: npx --prefix {{ common_mcp_base_path }}/npm_installs {{ common_package_name }} --help
+    cmd: npm list --prefix {{ common_mcp_base_path }}/npm_installs {{ common_package_name }}
   register: common_npm_verify_result
   changed_when: false
-  failed_when: false
 
-- name: Display successful npm package access message
+- name: Display npm package verification result
   ansible.builtin.debug:
-    msg: "Successfully accessed npm package via npx: {{ common_package_name }}"
-  when:
-    - common_npm_verify_result is defined
-    - common_npm_verify_result.rc == 0
-    - ansible_verbosity >= 2
-
-- name: Display failed npm package access message
-  ansible.builtin.debug:
-    msg: "Failed to access npm package via npx: {{ common_package_name }}"
-  when:
-    - common_npm_verify_result is defined
-    - common_npm_verify_result.rc != 0
+    msg: >-
+      npm package {{ common_package_name }}:
+      {{ 'installed successfully' if common_npm_verify_result.rc == 0
+      else 'verification failed' }}
 
 # Clean up
 - name: Clean npm cache (created during package install)
