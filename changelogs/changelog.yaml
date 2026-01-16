@@ -74,3 +74,10 @@ releases:
     - fix_go_build_arch.yaml
     - fix_python_detection.yaml
     release_date: '2026-01-16'
+  1.0.3:
+    changes:
+      bugfixes:
+      - Update the requires_ansible version to 2.16.0 to align with ansible.mcp.
+    fragments:
+    - fix_requires_ansible_platform.yaml
+    release_date: '2026-01-16'

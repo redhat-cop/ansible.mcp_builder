@@ -4,6 +4,14 @@ Ansible MCP Builder Collection Release Notes
 
 .. contents:: Topics
 
+v1.0.3
+======
+
+Bugfixes
+--------
+
+- Update the requires_ansible version to 2.16.0 to align with ansible.mcp.
+
 v1.0.2
 ======
 
