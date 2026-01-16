@@ -1,4 +1,0 @@
----
-bugfixes:
-  - Checks for ansible_python_interpreter to determine Python interpreter for uv tool installs.
-  - Verifies npm packages are installed correctly without skipping failures.

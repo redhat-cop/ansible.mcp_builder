@@ -2,38 +2,34 @@ ancestor: null
 releases:
   0.0.1:
     changes:
-      release_summary:
-        "Pre-release to test releases to Automation Hub and Ansible
+      release_summary: 'Pre-release to test releases to Automation Hub and Ansible
         Galaxy.
 
-        "
+        '
     fragments:
-      - summary_create_collection.yml
-    release_date: "2025-12-04"
+    - summary_create_collection.yml
+    release_date: '2025-12-04'
   0.0.2:
     changes:
-      release_summary:
-        "Cleans up build files and fixes broken links to prepare for
+      release_summary: 'Cleans up build files and fixes broken links to prepare for
         1.0.0 release.
 
-        "
+        '
     fragments:
-      - summary_0.0.2.yml
-    release_date: "2025-12-04"
+    - summary_0.0.2.yml
+    release_date: '2025-12-04'
   0.0.3:
     changes:
-      release_summary:
-        "Fix broken README link and adjust image tags to the redhat-cop
+      release_summary: 'Fix broken README link and adjust image tags to the redhat-cop
         org.
 
-        "
+        '
     fragments:
-      - summary_0.0.3.yml
-    release_date: "2025-12-04"
+    - summary_0.0.3.yml
+    release_date: '2025-12-04'
   1.0.0:
     changes:
-      release_summary:
-        "First stable release of the mcp_builder collection. \nThis
+      release_summary: "First stable release of the mcp_builder collection. \nThis
         release includes all the features to install and configure MCP servers when
         building execution environments.\nIt is designed for use alongside the ansible.mcp
         collection, providing a comprehensive solution for MCP server management with
@@ -41,31 +37,40 @@ releases:
         examples.\n\nNote: This collection is marked as Technology Preview until further
         notice.\n"
     fragments:
-      - summary_1.0.0.yml
-    release_date: "2025-12-12"
+    - summary_1.0.0.yml
+    release_date: '2025-12-12'
   1.0.0-rc1:
     changes:
-      release_summary:
-        "Pre-release (release candidate 1) of the mcp_builder collection.
+      release_summary: 'Pre-release (release candidate 1) of the mcp_builder collection.
 
-        "
+        '
     fragments:
-      - summary_1.0.0_rc1.yml
-    release_date: "2025-12-05"
+    - summary_1.0.0_rc1.yml
+    release_date: '2025-12-05'
   1.0.0-rc2:
     changes:
-      release_summary:
-        "Pre-release (release candidate 2) of the mcp_builder collection.
+      release_summary: "Pre-release (release candidate 2) of the mcp_builder collection.
         \nRemoves the TESTING documentation from the artifact.\n"
     fragments:
-      - summary_1.0.0_rc2.yml
-    release_date: "2025-12-05"
+    - summary_1.0.0_rc2.yml
+    release_date: '2025-12-05'
   1.0.1:
     changes:
       bugfixes:
-        - Added version variables for all MCP servers.
-        - Skipped AWS Core MCP verification temporarily. See https://github.com/awslabs/mcp/issues/1947
+      - Added version variables for all MCP servers.
+      - Skipped AWS Core MCP verification temporarily. See https://github.com/awslabs/mcp/issues/1947
     fragments:
-      - fix_add_version_variables.yml
-      - fix_ignore_aws_core_verification.yml
-    release_date: "2025-12-15"
+    - fix_add_version_variables.yml
+    - fix_ignore_aws_core_verification.yml
+    release_date: '2025-12-15'
+  1.0.2:
+    changes:
+      bugfixes:
+      - Checks for ansible_python_interpreter to determine Python interpreter for
+        uv tool installs.
+      - Detects the correct architecture for Go builds.
+      - Verifies npm packages are installed correctly without skipping failures.
+    fragments:
+    - fix_go_build_arch.yaml
+    - fix_python_detection.yaml
+    release_date: '2026-01-16'

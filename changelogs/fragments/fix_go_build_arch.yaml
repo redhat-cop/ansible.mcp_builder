@@ -1,3 +1,0 @@
----
-bugfixes:
-  - Detects the correct architecture for Go builds.

@@ -4,6 +4,16 @@ Ansible MCP Builder Collection Release Notes
 
 .. contents:: Topics
 
+v1.0.2
+======
+
+Bugfixes
+--------
+
+- Checks for ansible_python_interpreter to determine Python interpreter for uv tool installs.
+- Detects the correct architecture for Go builds.
+- Verifies npm packages are installed correctly without skipping failures.
+
 v1.0.1
 ======
 
