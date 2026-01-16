@@ -31,7 +31,7 @@ ansible.mcp_builder.install_mcp|Installs selected MCP servers
 
 ## Requirements
 
-**ansible-core**: 2.18.0+
+**ansible-core**: 2.16.0+
 
 **Python**: 3.11+
 
