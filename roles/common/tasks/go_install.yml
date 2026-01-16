@@ -27,6 +27,25 @@
 - name: Install Go
   when: not common_go_installed
   block:
+    - name: Detect system architecture
+      ansible.builtin.command:
+        cmd: uname -m
+      register: go_uname_arch
+      changed_when: false
+
+    - name: Set Go architecture
+      ansible.builtin.set_fact:
+        go_arch: "{{ 'arm64' if go_uname_arch.stdout in ['arm64', 'aarch64'] else 'amd64' if go_uname_arch.stdout == 'x86_64' else 'unsupported' }}"
+
+    - name: Fail if architecture is unsupported
+      ansible.builtin.fail:
+        msg: "Unsupported architecture: {{ go_uname_arch.stdout }}. Only x86_64 (amd64) and arm64/aarch64 are supported for Go builds."
+      when: go_arch == 'unsupported'
+
+    - name: Display Go download details
+      ansible.builtin.debug:
+        msg: "Downloading Go {{ common_golang_version }} for linux-{{ go_arch }}"
+
     - name: Create Go installation directory
       ansible.builtin.file:
         path: /usr/local
@@ -36,7 +55,7 @@
 
     - name: Download and extract Go
       ansible.builtin.unarchive:
-        src: "https://golang.org/dl/go{{ common_golang_version }}.linux-amd64.tar.gz"
+        src: "https://golang.org/dl/go{{ common_golang_version }}.linux-{{ go_arch }}.tar.gz"
         dest: /usr/local
         remote_src: true
         owner: root
@@ -94,6 +113,7 @@
       become: true
       environment:
         PATH: "/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
+        CGO_ENABLED: "0"
 
     - name: Build MCP Server binary
       ansible.builtin.command:
@@ -103,6 +123,7 @@
       become: true
       environment:
         PATH: "/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin"
+        CGO_ENABLED: "0"
 
     - name: Make MCP Server binary executable
       ansible.builtin.file:
