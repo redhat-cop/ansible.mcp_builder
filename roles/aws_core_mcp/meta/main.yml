@@ -4,7 +4,7 @@ galaxy_info:
   author: "Red Hat"
   description: "Installs the AWS Core MCP server from PyPI with dynamic proxy server strategy"
   license: "GPL-3.0-or-later"
-  min_ansible_version: "2.18.0"
+  min_ansible_version: "2.16.0"
 
   platforms:
     - name: EL
